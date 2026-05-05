@@ -264,10 +264,175 @@ body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:13
 .pc2-d{font-size:0.74rem;color:var(--muted);line-height:1.6}
 .pc2-time{font-size:0.62rem;color:var(--o);margin-top:2px}
 
-@media(max-width:800px){.sb{display:none}.cs{padding:22px 16px 54px}.hero{padding:30px 16px}.cg{grid-template-columns:1fr}}
+/* ══════════════════════════════════════════
+   RESPONSIVE CSS — NEW ADDITION
+   ══════════════════════════════════════════ */
+
+/* ─ MOBILE TOGGLE BUTTON ─ */
+.mob-toggle{
+  display:none;
+  position:fixed;
+  top:12px;
+  left:12px;
+  z-index:999;
+  background:var(--s2);
+  border:1px solid var(--border2);
+  border-radius:8px;
+  color:var(--g);
+  font-size:1.1rem;
+  width:40px;
+  height:40px;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:background .2s,border-color .2s;
+  box-shadow:0 2px 12px rgba(0,0,0,.5);
+}
+.mob-toggle:hover{background:var(--g2);border-color:var(--g)}
+
+/* ─ OVERLAY ─ */
+.sb-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:199;
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+}
+.sb-overlay.active{display:block}
+
+/* ─ TABLET: 900px - 1100px ─ */
+@media(max-width:1100px){
+  :root{--sw:240px}
+  .cs{padding:36px 44px 70px}
+  .hero{padding:44px 44px 38px}
+  .dg{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .cheat-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+}
+
+/* ─ SMALL TABLET: 768px - 900px ─ */
+@media(max-width:900px){
+  :root{--sw:265px}
+  .sb{
+    position:fixed;
+    top:0;left:0;
+    height:100vh;
+    transform:translateX(-100%);
+    transition:transform .28s cubic-bezier(.4,0,.2,1);
+    z-index:200;
+    box-shadow:4px 0 24px rgba(0,0,0,.6);
+  }
+  .sb.open{transform:translateX(0)}
+  .main{width:100%}
+  .mob-toggle{display:flex}
+  .hero{padding:58px 24px 36px}
+  .hero h1{font-size:clamp(1.6rem,6vw,2.4rem)}
+  .hero p{font-size:0.79rem}
+  .h-stats{gap:18px}
+  .hs .n{font-size:1.2rem}
+  .cs{padding:28px 24px 60px}
+  .ch-head h2{font-size:1.45rem}
+  .cg{grid-template-columns:1fr 1fr;gap:9px}
+  .dg{grid-template-columns:1fr 1fr;gap:12px}
+  .sk-grid{grid-template-columns:1fr 1fr}
+  .cheat-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .cd-hdr{padding:9px 13px}
+  .cd-title{font-size:0.75rem}
+  .cds{padding:11px 13px}
+  .ft{font-size:0.7rem}
+  .ft td:nth-child(2){display:none}
+  .syn{font-size:0.69rem}
+  .sb-body{font-size:0.69rem}
+}
+
+/* ─ MOBILE: max 600px ─ */
+@media(max-width:600px){
+  :root{--sw:100vw}
+  .sb{width:100vw;min-width:100vw}
+  .hero{padding:60px 16px 30px}
+  .hero h1{font-size:clamp(1.5rem,7vw,2rem);letter-spacing:-0.5px}
+  .hero p{font-size:0.76rem;max-width:100%}
+  .h-stats{gap:14px}
+  .hs .n{font-size:1.1rem}
+  .hs .l{font-size:0.55rem}
+  .cs{padding:22px 14px 56px;max-width:100%}
+  .ch-head h2{font-size:1.3rem}
+  .ch-head p{font-size:0.76rem}
+  .cg{grid-template-columns:1fr}
+  .dg{grid-template-columns:1fr}
+  .sk-grid{grid-template-columns:1fr}
+  .cheat-grid{grid-template-columns:1fr}
+  .lc{padding:14px 15px}
+  .lc-title{font-size:0.84rem}
+  .cd{border-radius:8px}
+  .cd-hdr{flex-wrap:wrap;gap:6px;padding:8px 12px}
+  .cd-left{gap:6px}
+  .badge{font-size:0.62rem;padding:2px 7px}
+  .cd-title{font-size:0.72rem;width:100%}
+  .cd-tog{display:none}
+  .cd-body{display:block !important}
+  .cds{padding:10px 12px}
+  .syn{font-size:0.66rem;line-height:1.8;padding:10px 11px;border-radius:5px}
+  .sb-body{font-size:0.66rem;line-height:1.8}
+  .ft{font-size:0.68rem}
+  .ft th{padding:4px 8px}
+  .ft td{padding:5px 8px}
+  .ft td:nth-child(2){display:none}
+  .uc{padding:8px 11px}
+  .uc-t{font-size:0.71rem}
+  .uc-c{font-size:0.67rem}
+  .ti{padding:12px 14px;font-size:0.75rem}
+  .term-body{font-size:0.68rem;padding:10px 12px}
+  .ch-num{font-size:0.56rem}
+  .div{font-size:0.54rem;margin:22px 0 16px}
+  .mdb{font-size:0.64rem;padding:5px 11px}
+  .ib{font-size:0.73rem;padding:10px 13px}
+  .pv{padding:12px}
+  .pd{width:30px;height:30px;font-size:.75rem}
+  .pc2-t{font-size:0.78rem}
+  .pc2-d{font-size:0.72rem}
+  .pc2-time{font-size:0.6rem}
+  .scen{padding:12px 14px}
+  .scen-title{font-size:0.78rem}
+  .ss-row{font-size:0.71rem}
+}
+
+/* ─ VERY SMALL: max 380px ─ */
+@media(max-width:380px){
+  .hero{padding:56px 12px 26px}
+  .cs{padding:18px 12px 50px}
+  .syn{font-size:0.62rem}
+  .badge{font-size:0.58rem}
+  .h-stats{gap:10px}
+  .hs .n{font-size:1rem}
+  .cd-hdr{padding:7px 10px}
+}
+
+/* ─ LARGE SCREENS: 1400px+ ─ */
+@media(min-width:1400px){
+  :root{--sw:290px}
+  .cs{padding:48px 72px 80px;max-width:1000px}
+  .hero{padding:64px 72px 52px}
+  .dg{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+}
+
+/* ─ PRINT ─ */
+@media print{
+  .sb,.mob-toggle,.mdb,.sb-overlay{display:none !important}
+  .main{width:100%}
+  .cs{display:block !important;padding:20px}
+  .cd-body{display:block !important}
+  .syn{font-size:0.65rem;border:1px solid #ccc}
+  body{background:white;color:black}
+}
+
 </style>
 </head>
 <body>
+
+  <button class="mob-toggle" id="mobToggle" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+  <div class="sb-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
 
 <!-- ══════════════════ SIDEBAR ══════════════════ -->
 <aside class="sb" id="sidebar">
@@ -4290,6 +4455,78 @@ function searchNav(val){
     item.style.display=(!q||item.textContent.toLowerCase().includes(q))?'flex':'none';
   });
 }
+// <!-- ══════════════════════════════════════════════════
+//   2. JavaScript — existing <script> tag ke ANDAR
+//      existing functions ke SAATH add karo (replace mat karo)
+//   ══════════════════════════════════════════════════ -->
+
+/* ─ SIDEBAR TOGGLE ─ */
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const overlay = document.getElementById('sbOverlay');
+  const btn = document.getElementById('mobToggle');
+  const isOpen = sb.classList.contains('open');
+  if (isOpen) {
+    sb.classList.remove('open');
+    overlay.classList.remove('active');
+    btn.textContent = '☰';
+    document.body.style.overflow = '';
+  } else {
+    sb.classList.add('open');
+    overlay.classList.add('active');
+    btn.textContent = '✕';
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeSidebar() {
+  const sb = document.getElementById('sidebar');
+  const overlay = document.getElementById('sbOverlay');
+  const btn = document.getElementById('mobToggle');
+  sb.classList.remove('open');
+  overlay.classList.remove('active');
+  btn.textContent = '☰';
+  document.body.style.overflow = '';
+}
+
+/* ─ NAV CLICK PE MOBILE SIDEBAR CLOSE ─ */
+document.querySelectorAll('.ni').forEach(item => {
+  item.addEventListener('click', () => {
+    if (window.innerWidth <= 900) closeSidebar();
+  });
+});
+
+/* ─ SWIPE TO OPEN/CLOSE SIDEBAR ─ */
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  const diff = touchEndX - touchStartX;
+  const sb = document.getElementById('sidebar');
+  if (diff > 60 && touchStartX < 40) toggleSidebar();        // right swipe from edge = open
+  if (diff < -60 && sb.classList.contains('open')) closeSidebar(); // left swipe = close
+}, { passive: true });
+
+/* ─ RESIZE PE SIDEBAR RESET ─ */
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sbOverlay').classList.remove('active');
+    document.getElementById('mobToggle').textContent = '☰';
+    document.body.style.overflow = '';
+  }
+});
+
+/* ─ ESCAPE KEY PE CLOSE ─ */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeSidebar();
+});
+
 </script>
 </body>
 </html>
